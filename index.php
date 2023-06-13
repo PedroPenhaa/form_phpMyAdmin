@@ -83,7 +83,7 @@
     
                     <div class="info">
                         <h1>Entre em Contato</h1>
-                        <p>Preencha seus dados e sua requisição ao lado que em breve entraremos em contato com você.</p>
+                        <p>Preencha seus dados e sua requisição que em breve entraremos em contato com você.</p>
                         <h2>Siga nossas redes:</h2>
                         <div class="social-icons">
                             <i class="fab fa-instagram"></i>
