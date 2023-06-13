@@ -205,7 +205,7 @@ form .input-description .textarea:valid ~ label{
     display: flex;
     margin-right: 10px;
     font-size: 24px;
-    color: white;
+    color: #555555;
     height: 30px;
     width: 30px;
     transition: transform 0.2s ease-in-out;
