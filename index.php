@@ -1,3 +1,38 @@
+<?php
+
+    include_once('config.php');
+
+    $sql = "SELECT * FROM contato ORDER BY nome DESC";
+
+    $resultConsult = $conexao->query($sql);
+
+    if(isset($_POST['submit']))
+    {
+/*        
+         print_r('Nome: ' . $_POST['nome']);
+         print_r('<br>');
+         print_r('Email: ' . $_POST['email']);
+         print_r('<br>');
+         print_r('Telefone: ' . $_POST['telefone']);
+         print_r('<br>');
+         print_r('Sexo: ' . $_POST['description']);
+         print_r('<br>');
+*/        
+      
+
+        $nome = $_POST['nome'];
+        $email = $_POST['email'];
+        $telefone = $_POST['telefone'];
+        $descricao = $_POST['description'];
+
+        $result = mysqli_query($conexao, "INSERT INTO contato(nome,email,telefone,descricao) 
+        VALUES ('$nome','$email','$telefone','$descricao')");    
+    }
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,25 +47,27 @@
     
     <section class="form-container">
         <div class="container">
-            <form action="">
+
+
+            <form action="index.php" method="POST">
  
                 <div class="conteudo">
 
                     <div class="formulario">
 
                         <div class="input-single">
-                            <input type="text" name="" id="nome-box" class="input" autocomplete="off" required>
-                            <label for="nome-box">Seu nome completo</label>
+                            <input type="text" name="nome" id="nome" class="input" autocomplete="off" required>
+                            <label for="nome">Seu nome completo</label>
                         </div>
         
                         <div class="input-single">
-                            <input type="text" name="" id="email-box" class="input" autocomplete="off" required>
-                            <label for="email-box">Seu e-mail</label>
+                            <input type="text" name="email" id="email" class="input" autocomplete="off" required>
+                            <label for="email">Seu e-mail</label>
                         </div>
                    
                         <div class="input-single">
-                            <input type="text" name="" id="cel-box" class="input" autocomplete="off" required>
-                            <label for="cel-box">Seu telefone</label>
+                            <input type="text" name="telefone" id="telefone" class="input" autocomplete="off" required>
+                            <label for="telefone">Seu telefone</label>
                         </div>
         
                         <div class="input-single input-description">
@@ -40,7 +77,7 @@
                         </div>
 
                         <div class="btn">
-                            <input type="submit" value="Enviar">
+                            <input type="submit" name="submit" id="submit" value="Enviar">
                         </div>
 
                     </div>
@@ -58,6 +95,33 @@
                     </div>
                 </div>
             </form>
+
+            <div class="registros">
+            <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Email</th>
+      <th scope="col">Telefone</th>
+      <th scope="col">Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+ 
+        <?php
+            while($user_data = mysqli_fetch_assoc($resultConsult))
+            {
+                echo "<tr>";
+                echo "<td>".$user_data['nome']."</td>";
+                echo "<td>".$user_data['email']."</td>";
+                echo "<td>".$user_data['telefone']."</td>";
+                echo "<td>".$user_data['descricao']."</td>";
+            }
+        ?>
+  </tbody>
+</table>
+            </div>
+
         </div>
     </section>
 
