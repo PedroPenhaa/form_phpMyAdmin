@@ -30,6 +30,9 @@
     
             $result = mysqli_query($conexao, "INSERT INTO contato(nome,email,telefone,descricao) 
             VALUES ('$nome','$email','$telefone','$descricao')");    
+
+            header("Location: index.php");
+            exit;
         }
 ?>
 
