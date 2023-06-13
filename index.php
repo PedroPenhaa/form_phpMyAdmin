@@ -1,37 +1,37 @@
-<?php
 
+<?php
     include_once('config.php');
 
-    $sql = "SELECT * FROM contato ORDER BY nome DESC";
-
-    $resultConsult = $conexao->query($sql);
-
-    if(isset($_POST['submit']))
-    {
-/*        
-         print_r('Nome: ' . $_POST['nome']);
-         print_r('<br>');
-         print_r('Email: ' . $_POST['email']);
-         print_r('<br>');
-         print_r('Telefone: ' . $_POST['telefone']);
-         print_r('<br>');
-         print_r('Sexo: ' . $_POST['description']);
-         print_r('<br>');
-*/        
-      
-
-        $nome = $_POST['nome'];
-        $email = $_POST['email'];
-        $telefone = $_POST['telefone'];
-        $descricao = $_POST['description'];
-
-        $result = mysqli_query($conexao, "INSERT INTO contato(nome,email,telefone,descricao) 
-        VALUES ('$nome','$email','$telefone','$descricao')");    
-    }
-
+    $resultado = "SELECT * FROM contato";
+    $consult = mysqli_query($conexao, $resultado);
 ?>
 
 
+
+<?php
+    include_once('config.php');
+
+        if(isset($_POST['submit']))
+        {
+    /*        
+             print_r('Nome: ' . $_POST['nome']);
+             print_r('<br>');
+             print_r('Email: ' . $_POST['email']);
+             print_r('<br>');
+             print_r('Telefone: ' . $_POST['telefone']);
+             print_r('<br>');
+             print_r('Sexo: ' . $_POST['description']);
+             print_r('<br>');
+    */        
+            $nome = $_POST['nome'];
+            $email = $_POST['email'];
+            $telefone = $_POST['telefone'];
+            $descricao = $_POST['description'];
+    
+            $result = mysqli_query($conexao, "INSERT INTO contato(nome,email,telefone,descricao) 
+            VALUES ('$nome','$email','$telefone','$descricao')");    
+        }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +47,6 @@
     
     <section class="form-container">
         <div class="container">
-
 
             <form action="index.php" method="POST">
  
@@ -97,29 +96,31 @@
             </form>
 
             <div class="registros">
-            <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Nome</th>
-      <th scope="col">Email</th>
-      <th scope="col">Telefone</th>
-      <th scope="col">Descrição</th>
-    </tr>
-  </thead>
-  <tbody>
- 
-        <?php
-            while($user_data = mysqli_fetch_assoc($resultConsult))
-            {
-                echo "<tr>";
-                echo "<td>".$user_data['nome']."</td>";
-                echo "<td>".$user_data['email']."</td>";
-                echo "<td>".$user_data['telefone']."</td>";
-                echo "<td>".$user_data['descricao']."</td>";
-            }
-        ?>
-  </tbody>
-</table>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">Descrição</th>
+                            <th scope="col">...</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                            <?php
+                               while($user_data = mysqli_fetch_assoc($consult))
+                                {
+                                    echo "<tr>";
+                                    echo "<td>".$user_data['nome']."</td>";
+                                    echo "<td>".$user_data['email']."</td>";
+                                    echo "<td>".$user_data['telefone']."</td>";
+                                    echo "<td>".$user_data['descricao']."</td>";
+                                    echo "</tr>";
+                                }
+                            ?>
+                    </tbody>
+                </table>
             </div>
 
         </div>
@@ -127,28 +128,3 @@
 
 </body>
 </html>
-
-<!-- 
-
-     <div class="input-single">
-                        <input type="text" name="" id="nome-box" class="input" autocomplete="off" required>
-                        <label for="nome-box">Seu nome completo</label>
-                    </div>
-    
-                    <div class="input-single">
-                        <input type="text" name="" id="email-box" class="input" autocomplete="off" required>
-                        <label for="email-box">Seu e-mail</label>
-                    </div>
-               
-                    <div class="input-single">
-                        <input type="text" name="" id="cel-box" class="input" autocomplete="off" required>
-                        <label for="cel-box">Seu telefone</label>
-                    </div>
-    
-                    <div class="input-single input-single-last">
-                        <label class="label-description" for="description-box">Explique sua requisição.</label>
-                        <textarea name="description" id="description" cols="30" rows="10"></textarea>
-                    </div>
-
-
--->
