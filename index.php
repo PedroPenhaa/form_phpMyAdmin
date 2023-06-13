@@ -1,12 +1,9 @@
-
 <?php
     include_once('config.php');
 
     $resultado = "SELECT * FROM contato";
     $consult = mysqli_query($conexao, $resultado);
 ?>
-
-
 
 <?php
     include_once('config.php');
@@ -106,7 +103,6 @@
                             <th scope="col">Email</th>
                             <th scope="col">Telefone</th>
                             <th scope="col">Descrição</th>
-                            <th scope="col">...</th>
                         </tr>
                     </thead>
                     <tbody>

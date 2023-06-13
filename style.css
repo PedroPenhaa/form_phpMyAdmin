@@ -22,19 +22,73 @@ body{
     margin: 0 auto;
     padding: 0 4%;
     display: flex;
-  
+    justify-content: space-between;
 }
 
-.registros{
-    margin-right: 10px;
-    background-color: white;
-    padding: 10px;
-    width: 500px;
-    height: 500px;
+
+
+
+
+
+
+
+
+
+
+
+.registros {
+    margin: 0 auto;
+    margin-left: 50px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    width: 550px;
     border-radius: 20px;
-    border: 2px solid black;
+    border: 1px solid black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .table thead th {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .table tbody td {
+    padding: 15px 5px;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+  }
+  
+  .table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #ebebeb;
+  }
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 form{
     background-color: white;
@@ -42,7 +96,8 @@ form{
     width: 500px;
     height: 500px;
     border-radius: 20px;
-    border: 2px solid black;
+    border: 1px solid black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 form .conteudo{
